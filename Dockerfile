@@ -14,3 +14,9 @@ RUN curl -L -o /tmp/docker-${DOCKER_VERSION}.tgz https://get.docker.com/builds/L
     tar -xz -C /tmp -f /tmp/docker-${DOCKER_VERSION}.tgz && \
     mv /tmp/docker/* /usr/bin
 
+RUN curl https://raw.githubusercontent.com/apex/apex/master/install.sh | sh
+
+ENV TERRAFORM_VERSION 0.9.5
+RUN curl -L -o /tmp/terraform-${TERRAFORM_VERSION}.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
+    unzip /tmp/terraform-${TERRAFORM_VERSION}.zip -d /bin && \
+    rm -rf /tmp/terraform*
