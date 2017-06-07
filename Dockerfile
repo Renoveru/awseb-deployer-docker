@@ -3,6 +3,7 @@ FROM python:2.7.13
 RUN apt-get update && \
     apt-get install -y zip \
                     unzip \
+                    jq \
                     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
