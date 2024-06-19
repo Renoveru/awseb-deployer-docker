@@ -1,5 +1,7 @@
 FROM python:3.8
 
+LABEL org.opencontainers.image.source https://github.com/Renoveru/awseb-deployer-docker
+
 RUN apt-get update && \
     apt-get install -y zip \
                     unzip \
