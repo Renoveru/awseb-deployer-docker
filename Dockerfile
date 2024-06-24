@@ -13,11 +13,13 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
 RUN unzip awscliv2.zip
 RUN sudo ./aws/install
 
-# バージョンの確認
-# https://github.com/moby/moby/tags
-RUN curl -L -o /tmp/docker.tgz https://get.docker.com/builds/Linux/i386/docker-latest.tgz && \
-    tar -xz -C /tmp -f /tmp/docker.tgz && \
-    mv /tmp/docker/* /usr/bin
+# dockerのインストール
+RUN wget -q -O /tmp/docker.tgz \
+    https://download.docker.com/linux/static/stable/x86_64/docker-20.10.17.tgz && \
+    tar -C /tmp -xzvf /tmp/docker.tgz && \
+    mv /tmp/docker/docker /bin/docker && \
+    chmod +x /bin/docker && \
+    rm -rf /tmp/docker*
 
 # バージョンの確認
 # https://releases.hashicorp.com/terraform
