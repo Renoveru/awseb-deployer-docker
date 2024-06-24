@@ -1,4 +1,4 @@
-FROM python:3.9
+FROM debian:bullseye-slim
 
 LABEL org.opencontainers.image.source https://github.com/Renoveru/awseb-deployer-docker
 
@@ -7,7 +7,11 @@ RUN apt-get update && \
                     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip3 install awsebcli awscli
+# aws cli v2 のインストール
+# https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-linux.html
+RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+RUN unzip awscliv2.zip
+RUN sudo ./aws/install
 
 # バージョンの確認
 # https://github.com/moby/moby/tags?after=v17.04.0-ce
