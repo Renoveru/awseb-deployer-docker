@@ -7,11 +7,7 @@ RUN apt-get update && \
                     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
-# aws cli v2 のインストール
-# https://docs.aws.amazon.com/ja_jp/cli/latest/userguide/install-cliv2-linux.html
-RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-RUN unzip awscliv2.zip
-RUN sudo ./aws/install
+RUN pip3 install awsebcli awscli
 
 # バージョンの確認
 # https://github.com/moby/moby/tags?after=v17.04.0-ce
@@ -26,5 +22,3 @@ ENV TERRAFORM_VERSION 0.9.6
 RUN curl -L -o /tmp/terraform-${TERRAFORM_VERSION}.zip "https://releases.hashicorp.com/terraform/${TERRAFORM_VERSION}/terraform_${TERRAFORM_VERSION}_linux_amd64.zip" && \
     unzip /tmp/terraform-${TERRAFORM_VERSION}.zip -d /bin && \
     rm -rf /tmp/terraform*
-
-RUN aws --version
