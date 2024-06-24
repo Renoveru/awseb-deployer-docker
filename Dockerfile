@@ -3,7 +3,7 @@ FROM debian:bullseye-slim
 LABEL org.opencontainers.image.source https://github.com/Renoveru/awseb-deployer-docker
 
 RUN apt-get update && \
-    apt-get install -y zip unzip jq less curl sudo\
+    apt-get install -y unzip jq less curl sudo ca-certificates \
                     --no-install-recommends && \
     rm -rf /var/lib/apt/lists/*
 
