@@ -15,8 +15,8 @@ RUN sudo ./aws/install
 
 # バージョンの確認
 # https://github.com/moby/moby/tags
-RUN curl -L -o /tmp/docker-${DOCKER_VERSION}.tgz https://get.docker.com/builds/Linux/i386/docker-latest.tgz && \
-    tar -xz -C /tmp -f /tmp/docker-${DOCKER_VERSION}.tgz && \
+RUN curl -L -o /tmp/docker.tgz https://get.docker.com/builds/Linux/i386/docker-latest.tgz && \
+    tar -xz -C /tmp -f /tmp/docker.tgz && \
     mv /tmp/docker/* /usr/bin
 
 # バージョンの確認
