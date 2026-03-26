@@ -1,4 +1,4 @@
-FROM --platform=x86_64 ruby:3.3.0
+FROM --platform=x86_64 ruby:3.4
 
 LABEL org.opencontainers.image.source https://github.com/Renoveru/awseb-deployer-docker
 
